@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+  <title>翼健康</title>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="./js/flexible.js"></script>
+  <script src="./js/encrypt.js"></script>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    background: #f7f7f7;
+  }
+
+  .container {
+    background: #f7f7f7;
+    padding: .5333rem;
+    height: 100vh;
+    position: relative;
+  }
+
+  .tital {
+    font-size: .48rem;
+    color: #333333;
+    font-weight: 600;
+  }
+
+  .declare {
+    font-size: .3733rem;
+    color: #666666;
+    font-weight: 400;
+    margin-top: .2667rem;
+  }
+
+  .input {
+    background: #FFFFFF;
+    border-radius: .2667rem;
+    padding: 0 .5333rem;
+    margin-top: .5333rem;
+  }
+
+  .input_phone {
+    font-size: .3733rem;
+    color: #666666;
+    line-height: .5333rem;
+    font-weight: 400;
+    padding: .5333rem 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: #f7f7f7 solid .0133rem;
+  }
+
+  .input_span {
+    font-size: .3733rem;
+    color: #666666;
+    line-height: .5333rem;
+    font-weight: 400;
+  }
+
+  .input_span::before {
+    content: '*';
+    font-size: .3733rem;
+    color: #FF0000;
+    line-height: .5333rem;
+    font-weight: 400;
+    margin-right: .1333rem;
+  }
+
+  .input_text {
+    border: none;
+    outline: none;
+    font-size: .4267rem;
+    color: #333333;
+    text-align: right;
+    font-weight: 500;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #d9d9d9;
+  }
+
+  input::-moz-input-placeholder {
+    color: #d9d9d9;
+  }
+
+  input::-ms-input-placeholder {
+    color: #d9d9d9;
+  }
+
+  input:disabled {
+    color: #d9d9d9;
+    background: #fff;
+  }
+
+  .btn {
+    background: #1E76FF;
+    border-radius: .192rem;
+    width: 100%;
+    height: 1.2rem;
+    border: none;
+    outline: none;
+    font-size: .4267rem;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 1.0667rem;
+    opacity: 0.2;
+    line-height: 1.2rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .care {
+    margin-top: .5333rem;
+  }
+
+  .sp_img {
+    width: .4267rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .sp_sp {
+    font-size: .3733rem;
+    color: #363636;
+    font-weight: 500;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .16rem;
+  }
+
+  .idea {
+    font-size: .32rem;
+    color: #999999;
+    font-weight: 400;
+    margin-left: .64rem;
+    margin-top: .08rem;
+  }
+
+  .user_vip {
+    font-size: .4267rem;
+    color: #333333;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .line {
+    width: 90vw;
+    display: inline-block;
+    position: absolute;
+    top: .32rem;
+  }
+
+  .vip_box {
+    padding: .3467rem 0 .8rem 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .box_h {
+    width: 2.84rem;
+    height: 2rem;
+    font-size: .32rem;
+    color: #999999;
+    text-align: center;
+    font-weight: 400;
+    margin-top: .4533rem;
+  }
+
+  .box_h img {
+    width: 1.1733rem;
+  }
+
+  .box_h p {
+    margin-top: .1867rem;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <p class="tital">“翼健康”会员兑换</p>
+    <p class="declare">兑换“翼健康”会员后，可以随时享用专属的会员服务</p>
+    <div class="input">
+      <div class="input_phone">
+        <span class="input_span">手机号码</span>
+        <input type="text" class="input_text" placeholder="请输入开通会员的手机号码" oninput="only_phone(this)">
+      </div>
+      <div class="input_phone">
+        <span class="input_span">兑换码</span>
+        <input type="text" class="input_text" placeholder="请输入4位兑换码" oninput="only_code(this)">
+      </div>
+    </div>
+    <button class="btn" disabled>保存</button>
+    <div class="care">
+      <img class="sp_img" src="./images/care.png" alt="">
+      <span class="sp_sp">温馨提示</span>
+    </div>
+    <div class="idea">
+      开通服务的号码才具备会员权益，建议使用设备绑定的手机号码
+    </div>
+    <!-- <p class="user_vip">会员权益</p>
+    <img class="line" src="./images/line.png" alt=""> -->
+
+    <div style=" position: relative; margin-top: 2.2933rem;">
+      <p class="user_vip">会员权益</p>
+      <img class="line" src="./images/line.png">
+    </div>
+    <div class="vip_box">
+      <div class="box_h">
+        <!-- <img src="./images//健康永久保存@2x.png" alt=""> -->
+        <p>数据永久保存</p>
+      </div>
+      <div class="box_h">
+        <!-- <img src="./images//数据异常管理@2x.png" alt=""> -->
+        <p>数据异常提醒</p>
+      </div>
+      <div class="box_h">
+        <!-- <img src="./images//数据家人共享@2x.png" alt=""> -->
+        <p>数据家人共享</p>
+      </div>
+      <div class="box_h">
+        <!-- <img src="./images//名医科普@2x.png" alt=""> -->
+        <p>名医科普</p>
+      </div>
+      <div class="box_h">
+        <!-- <img src="./images//健康资讯@2x.png" alt=""> -->
+        <p>健康资讯</p>
+      </div>
+      <div class="box_h">
+        <!-- <img src="./images//多屏数据共享@2x.png" alt=""> -->
+        <p>多端共享</p>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function only_phone() {
+    checkInput()
+  }
+
+  function only_code() {
+    checkInput()
+  }
+  let oBtn = document.getElementsByClassName('btn')[0]
+
+  function checkInput() {
+    let phone = document.getElementsByClassName('input_text')[0].value
+    let code = document.getElementsByClassName('input_text')[1].value
+    if (phone && code) {
+      oBtn.style.opacity = '1'
+      oBtn.disabled = false
+    } else {
+      oBtn.style.opacity = '0.2'
+      oBtn.disabled = true
+    }
+  }
+
+  const init = () => {
+    var params = {
+      url: 'http://localhost:2000/health/api/redeem/member',
+      obj: ee
+    }
+    myPost(params)
+  }
+  let btn = document.getElementsByClassName('btn')[0]
+
+  function openResult() {
+    let myPhone = document.getElementsByClassName('input_text')[0].value
+    var rest = confirm(`需要开通会员的手机号\n${myPhone}`)
+    if (rest === true) {
+      init()
+    } else {}
+  }
+  btn.addEventListener('click', () => {
+    openResult()
+  })
+  // js的ajax
+  function myPost(params) {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('POST', params.url, true);
+    httpRequest.setRequestHeader("Accept", "application/json;charset=UTF-8");
+    httpRequest.setRequestHeader("Content-Type", "text/plain");
+    httpRequest.setRequestHeader("Health-Body-Encrypt", "asymmetric.RSA");
+    // httpRequest.setRequestHeader("Access-Control-Allow-Origin","*");
+    httpRequest.send(JSON.stringify(params.obj));
+    /**
+     * 获取数据后的处理程序
+     */
+    httpRequest.onreadystatechange = function () {
+      if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+        var json = JSON.parse(httpRequest.responseText);
+        // var json = httpRequest;
+        // console.log(json);
+        if (json.code === 0) {
+          document.getElementsByClassName('input_text')[0].value = ''
+          document.getElementsByClassName('input_text')[1].value = ''
+          alert('兑换成功')
+        } else {
+          alert('请输入正确的手机号或兑换码');
+        }
+      }
+    };
+  }
+
+  // jq的ajax
+  // function myPost(params) {
+  //   $.ajax({
+  //     type: "POST",
+  //     url: params.url,
+  //     data: params.obj,
+  //     dataType: "json",
+  //     success: function (data) { //或者：var d = $.parseJSON(data);
+  //       console.log('--------------', data);
+  //     },
+  //     error: function (data, status, e) {
+  //       alert(e);
+  //     }
+  //   });
+  // }
+</script>
+
+</html>
